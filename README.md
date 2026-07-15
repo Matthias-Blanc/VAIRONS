@@ -1,4 +1,3 @@
-<img width="328" height="328" alt="LOGO" src="https://github.com/user-attachments/assets/b97f3f61-c11f-4225-ac80-bc6fdd77262b" />
 # Vairons
 
 A desktop tool for quantitative analysis of multi-channel fluorescence microscopy
