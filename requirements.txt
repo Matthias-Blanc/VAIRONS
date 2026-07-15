@@ -1,0 +1,27 @@
+# Vairons — Python dependencies
+#
+# Tested on Python 3.14 (also compiled under 3.13). The exact versions the code
+# was validated against are noted in the trailing comments. Two packages
+# (openpyxl, imageio) are not imported directly but are required as runtime
+# backends of pandas / scikit-image. GPU is optional: install a CUDA build of
+# PyTorch for Cellpose GPU acceleration (the default wheels below are CPU-only and
+# run Cellpose slowly). matplotlib is needed only for the optional batch QC PDF.
+
+numpy>=1.24           # tested 2.5.0
+scipy>=1.10           # tested 1.17.1 — ndimage, signal (peak finding)
+scikit-image>=0.26    # tested 0.26.0 — requires the modern regionprops attribute
+                      #   names (axis_major_length, image_convex, image_filled)
+pandas>=2.0           # tested 2.3.3
+openpyxl>=3.1         # tested 3.1.5 — pandas engine that reads/writes the .xlsx summaries
+tifffile>=2023.1      # tested 2026.6.1 — TIFF read/write (axes/calibration metadata)
+imageio>=2.30         # tested 2.37.3 — scikit-image I/O backend (skimage.io)
+PyQt6>=6.4            # tested 6.11.0 — desktop GUI
+cellpose>=4.2,<5      # tested 4.2.1.1 — Cellpose-SAM (cpsam). The 4.x API is
+                      #   required; the code does NOT run on Cellpose 3.x.
+torch>=2.0            # tested 2.12.1 — required by Cellpose; install a CUDA build
+                      #   (e.g. from pytorch.org) to enable GPU segmentation
+matplotlib>=3.6       # tested 3.11.0 — used only by qc_report.py (batch QC PDF)
+
+# Optional: read ND2 / CZI / LIF inputs (TIFF works without it). Install alongside
+# its per-format reader, e.g. `pip install aicsimageio aicspylibczi nd2 readlif`.
+# aicsimageio>=4.0
